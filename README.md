@@ -1,4 +1,5 @@
-# Getting Started with Create React App
+# This is the default readme for new React Applications. 
+## Our project charter, architecture, and code required to run this application will all be located in this repository. We are leaving this README.md file in order for other individuals to be able to run our application
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
