@@ -12,15 +12,13 @@
 
 **team:** we have been brought onto this project because we believe a student perspective is necessary to improve transparency around the housing process at vanderbilt, and allow other students to experience less headache and heartbreak around housing allocations and decisions. our current teams consists of:
 
-**julian: backend dev**
-
-**kyle: frontend dev**
-
-**austin: ui/ux designer**
+**austin: fullstack dev**
 
 **kari: product manager**
 
+**kyle: frontend dev**
 
+**julian: backend dev**
 
 **high level requirements:**: functional student and admin modes with appropriate restrictions, access to student review platform, ability for students to match into roommate groups, view of possible dorms, view of amenities, chance calculators for amenity selection  
 
