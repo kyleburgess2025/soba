@@ -45,7 +45,7 @@ function Admin() {
   // useEffect /read
   useEffect(() => {
     Axios.get('http://localhost:3001/read').then(res => {
-      console.log("admin.js started");
+      console.log(res.data);
       setDormList(res.data); // setting list of dorms
     })
     .catch(err => {

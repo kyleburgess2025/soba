@@ -9,7 +9,7 @@ import Axios from "axios";
 const Dashboard = () => {
   const [user, loading, error] = useAuthState(auth);
   const [numDorms, setNum] = useState(0);
-  const savedDorms = [
+  const [savedDorms, setSavedDorms] = useState([
     {
       name: "McGill",
       amenities: ["Laundry", "Good location", "Singles"],
@@ -118,7 +118,18 @@ const Dashboard = () => {
         },
       ],
     },
-  ];
+  ]);
+
+  useEffect(() => {
+    Axios.get("http://localhost:3001/read")
+      .then((res) => {
+        console.log("admin.js started");
+        setSavedDorms(res.data); // setting list of dorms
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  })
 
   const [self, setSelf] = useState({
     name: user.displayName,
