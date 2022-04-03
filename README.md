@@ -1,3 +1,7 @@
+# HOW TO RUN:
+
+After unzipping both folders, enter the soba-server-main directory. Run ```npm i``` to install dependencies, then run ```npm start``` to start the server. Then, navigate to the soba-master folder and run ```npm i``` and ```npm start```. This will start the app.
+
 # This is the technical README for our project. This simply walks you though the steps needed to run our application.
 
 ## You can find the project charter, architecture, and a summary of the housing process at Vanderbilt under the information tab and at https://vhl.ink/soba We are leaving this README.md file in order for other individuals to be able to run our application if they would like
