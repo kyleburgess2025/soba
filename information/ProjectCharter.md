@@ -20,7 +20,7 @@
 
 **julian: backend dev**
 
-**high level requirements:**: functional student and admin modes with appropriate restrictions, access to student review platform, ability for students to match into roommate groups, view of possible dorms, view of amenities, chance calculators for amenity selection  
+**high level requirements:** functional student and admin modes with appropriate restrictions, access to student review platform, ability for students to match into roommate groups, view of possible dorms, view of amenities, chance calculators for amenity selection  
 
 **platform features:** login with google using firebase authentication, database using mongoDB with python, mobile-first front-end built with react. 
 
