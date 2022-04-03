@@ -1,0 +1,50 @@
+h1 {
+    text-align: left;
+    color: rgb(2, 2, 2);
+    margin-bottom: .3em;
+    
+  }
+
+  h2 {
+    text-align: left;
+    color: rgb(0, 0, 0);
+    margin-bottom: .30em;
+    
+  }
+
+h3 {
+  outline: 5px black;
+  outline-width: medium;
+}
+
+a:link {
+  text-decoration: none;
+}
+h3:visited {
+  text-decoration: none;
+  text-decoration-color: black;
+}
+a:hover {
+  text-decoration: none;
+  background-color: #ecffb0;
+}
+a:active {
+  text-decoration: none;
+  background-color: #ecffb0;
+}
+
+
+
+  div {
+    margin: 20px;
+    overflow :hidden;
+    color: rgb(0, 0, 0);
+    text-align: left;
+    line-height: 1.6em;
+    
+  }
+  
+
+  
+  
+ body { background-color: #d6f0ff; }
