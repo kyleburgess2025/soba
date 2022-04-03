@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { auth } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import "./onboard.css";
 
 function Onboard() {
   const [user, loading, error] = useAuthState(auth);
@@ -11,7 +12,7 @@ function Onboard() {
   const [school, setSchool] = useState("Vanderbilt");
   const [numRoommates, setNum] = useState(0);
 
-  let tempObj = {year: "admin"};
+  let tempObj = { year: "admin" };
 
   const onSubmit = () => {
     tempObj.gender = gender;
@@ -20,21 +21,26 @@ function Onboard() {
     tempObj.year = year;
     setSelections(tempObj);
     console.log(tempObj);
-      //    Save selections to user profile
-  }
+    //    Save selections to user profile
+  };
 
   return (
-    <div>
-      <h1>welcome, {user.displayName.toLowerCase()}</h1>
-      <h2>let's get acquainted before we get to the good stuff</h2>
-      <p>what is your university?</p>
+    <div className="onboard">
+      <h1 className="obTitle">
+        welcome,{" "}
+        <span className="special">{user.displayName.toLowerCase()}</span>
+      </h1>
+      <h2 className="obSub">
+        before we get to the good stuff... let's get acquainted
+      </h2>
+      <p>what is your <span className="special">university</span>?</p>
       <input
         type="text"
         onChange={(e) => {
           setSchool(e.target.value);
         }}
       />
-      <p>what is your year?</p>
+      <p>what is your <span className="special">year</span>?</p>
       <select
         onChange={(e) => {
           setYear(e.target.value);
@@ -47,14 +53,14 @@ function Onboard() {
         <option>senior</option>
       </select>
       {year === "admin" ? (
-        <div>
-          <Link to="/admin" onClick={onSubmit}>
+        <div className="linkContainer">
+          <Link className="link" to="/admin" onClick={onSubmit}>
             submit
           </Link>
         </div>
       ) : (
-        <div>
-          <p>what is your gender?</p>
+        <div className="student">
+          <p>what is your <span className="special">gender</span>?</p>
           <select
             onChange={(e) => {
               setGender(e.target.value);
@@ -65,7 +71,7 @@ function Onboard() {
             <option>nonbinary</option>
             <option>other/prefer not to say</option>
           </select>
-          <p>how many roommates do you plan to have next year?</p>
+          <p>how many <span className="special">roommates</span> do you plan to have next year?</p>
           <select
             onChange={(e) => {
               setNum(parseInt(e.target.value, 10));
@@ -77,26 +83,21 @@ function Onboard() {
             <option>3</option>
             <option>4</option>
             <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option>9</option>
             <option>not sure</option>
           </select>
           {numRoommates === 0 || numRoommates === "not sure" ? (
-            <Link to="/" onClick={onSubmit}>
-              submit
-            </Link>
+            <div className="linkContainer1">
+              <Link className="link" to="/" onClick={onSubmit}>
+                submit
+              </Link>
+            </div>
           ) : (
-            <div>
-              <p>list the school email of each of your intended roommates:</p>
-              <p>
+            <div className="meerkat">
+              <p>list the <span className="special">school email</span> of each of your intended roommates:</p>
+              <p id="sub">
                 if a roommate has not joined soba, they will be invited over
-                email
-              </p>
-              <p>
-                (this is optional, but including roommates will help us compute
-                your chances of getting your preferred room)
+                email. <span className="special">this is optional</span>, but including roommates will help us
+                compute your chances of getting your preferred room
               </p>
               {Array.from(Array(numRoommates), (e, i) => {
                 return (
@@ -109,9 +110,11 @@ function Onboard() {
                   />
                 );
               })}
-              <Link to="/" onClick={onSubmit}>
-                submit
-              </Link>
+              <div className="linkContainer2">
+                <Link className="link" to="/" onClick={onSubmit}>
+                  submit
+                </Link>
+              </div>
             </div>
           )}
         </div>
