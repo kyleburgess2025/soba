@@ -1,6 +1,6 @@
 # This is the default readme for new React Applications. 
 
-## You can also find the project charter, architecture, and a summary of the housing process at Vanderbilt here! https://vhl.ink/soba Our project charter, architecture, and code required to run this application will also all be located in this repository. We are leaving this README.md file in order for other individuals to be able to run our application if they would like
+## You can also find the project charter, architecture, and a summary of the housing process at Vanderbilt under the information tab and at! https://vhl.ink/soba Our project charter, architecture, and cthe ode required to run this application will also all be located in this repository. We are leaving this README.md file in order for other individuals to be able to run our application if they would like
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
