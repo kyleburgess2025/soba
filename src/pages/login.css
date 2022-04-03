@@ -2,6 +2,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  font-family: monospace;
 }
 
 body {
@@ -19,7 +20,7 @@ body {
 
 .signin {
     padding-top: 50vh;
-    padding-bottom: 10vh;
+    padding-bottom: 12vh;
     font-size: 7.5vh;
     margin: 0;
     text-align: center;
@@ -32,4 +33,7 @@ body {
     font-size: 4vh;
     width: 100%;
     border-radius: 20px;
+    box-shadow: 0;
+    border: none;
+    font-family: monospace;
 }
