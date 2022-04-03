@@ -57,6 +57,7 @@ function Onboard() {
       }
     };
 
+    tempObj.user_id = obj._id;
     tempObj.roommates = tempArr;
     tempObj.gender = gender;
     tempObj.school = school;
@@ -72,6 +73,8 @@ function Onboard() {
       tempObj.points = 3;
     } else if (year === "senior") {
       tempObj.points = 4;
+    } else if (year === "admin") {
+      console.log("admin");
     } else {
       console.log("not a valid year");
     }
@@ -119,7 +122,7 @@ function Onboard() {
       </select>
       {year === "admin" ? (
         <div className="linkContainer">
-          <Link className="link" to="/admin" onClick={onSubmit}>
+          <Link className="link" to="/admin" onClick={insertToStudent}>
             submit
           </Link>
         </div>
