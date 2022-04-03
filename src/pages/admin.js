@@ -31,11 +31,11 @@ function Admin() {
 
   function onSubmit(name, amenities, img_url, room_plan, room_types) {
     const finalObj = {
-      name,
-      amenities,
-      img_url,
-      room_plan,
-      room_types,
+      dorm_name: name,
+      dorm_amenities: amenities,
+      dorm_img_url: img_url,
+      dorm_room_plan: room_plan,
+      dorm_room_types: room_types,
     };
     setDormList([...dormList, finalObj]);
     insertToDorm(finalObj);
@@ -91,34 +91,8 @@ function Admin() {
             </div>
           );
         })}
+      </div>  
       </div>
-      
-      {/* UNCOMMENT below to see all data in Dorms */}
-      {/* <h1>Output</h1>
-      {dormList.map((val, key) => {
-        return (
-          <div key={key}>
-            <h3>{val.dorm_name}</h3>
-            <p>{val.dorm_amenities}</p>
-            <p>{val.dorm_img_url}</p>
-            <p>{val.dorm_room_plan}</p>
-            <p>
-              {val.dorm_room_types.map((val, key) => {
-                return (
-                  <div key={key}>
-                    <p>{val.name}</p>
-                    <p>{val.avail_beds}</p>
-                  </div>
-                );
-              })}
-            </p>
-          </div>
-        )
-      })} */}
-
-    </div>
-    
-    
   );
 }
 
