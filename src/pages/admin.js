@@ -8,98 +8,11 @@ import Axios from 'axios';
 
 function Admin() {
   // new changes
-  const [dormList, setDormList] = useState([]);
-
+  const [dormList, setDormList] = useState([]); // dormList
   const [user, loading, error] = useAuthState(auth);
-
   const [school, setSchool] = useState("Vanderbilt");
-  // const [dormArr, setDorms] = useState([
-  //   {
-  //     name: "McGill",
-  //     amenities: ["Laundry", "Good location", "Singles"],
-  //     img_url:
-  //       "https://cdn.vanderbilt.edu/vu-web/insidedores-wpcontent/20190418062955/IMG_20141009_172243_1-11.jpg",
-  //     room_plans:
-  //       "https://www.campus1mtl.ca/montreal-student-housing/floorplans",
-  //     room_types: [
-  //       {
-  //         name: "double",
-  //         reviews: [
-  //           {
-  //             user: "Kari",
-  //             value: 4,
-  //             message: "Great place!",
-  //           },
-  //           {
-  //             user: "Kyle",
-  //             value: 5,
-  //             message: "Great place!",
-  //           },
-  //         ],
-  //         avail_beds: 40,
-  //       },
-  //       {
-  //         name: "single",
-  //         reviews: [
-  //           {
-  //             user: "Kari",
-  //             value: 4,
-  //             message: "Great place!",
-  //           },
-  //           {
-  //             user: "Kyle",
-  //             value: 5,
-  //             message: "Great place!",
-  //           },
-  //         ],
-  //         avail_beds: 70,
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     name: "EBI",
-  //     amenities: ["Laundry", "Attached food", "Nice suites"],
-  //     img_url:
-  //       "https://cdn.vanderbilt.edu/vu-web/insidedores-wpcontent/20190418062955/IMG_20141009_172243_1-11.jpg",
-  //     room_plans:
-  //       "https://www.campus1mtl.ca/montreal-student-housing/floorplans",
-  //     room_types: [
-  //       {
-  //         name: "double",
-  //         reviews: [
-  //           {
-  //             user: "Kari",
-  //             value: 4,
-  //             message: "Great place!",
-  //           },
-  //           {
-  //             user: "Kyle",
-  //             value: 5,
-  //             message: "Great place!",
-  //           },
-  //         ],
-  //         avail_beds: 40,
-  //       },
-  //       {
-  //         name: "single",
-  //         reviews: [
-  //           {
-  //             user: "Kari",
-  //             value: 4,
-  //             message: "Great place!",
-  //           },
-  //           {
-  //             user: "Kyle",
-  //             value: 5,
-  //             message: "Great place!",
-  //           },
-  //         ],
-  //         avail_beds: 70,
-  //       },
-  //     ],
-  //   },
-  // ]);
 
+  // INSERT dorm
   const insertToDorm = (obj) => {
     console.log(obj);
     Axios.post('http://localhost:3001/dorm/insert', obj)
@@ -109,6 +22,11 @@ function Admin() {
     .catch(err => {
       console.log(err);
     })
+  }
+
+  // DELETE dorm
+  const deleteDorm = (input_id) => {
+    Axios.delete('http://localhost:3001/dorm/delete/' + input_id)
   }
 
   function onSubmit(name, amenities, img_url, room_plan, room_types) {
@@ -127,8 +45,8 @@ function Admin() {
   // useEffect /read
   useEffect(() => {
     Axios.get('http://localhost:3001/read').then(res => {
-      console.log(res.data);
-      setDormList(res.data);
+      console.log("admin.js started");
+      setDormList(res.data); // setting list of dorms
     })
     .catch(err => {
       console.log(err);
@@ -168,6 +86,8 @@ function Admin() {
                   })}
                 </ul>
               </div>
+              {/* this deletes the dorm */}
+              <button onClick={() => deleteDorm(obj._id)}>DELETE</button>
             </div>
           );
         })}
