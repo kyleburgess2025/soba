@@ -95,32 +95,29 @@ function Admin() {
     },
   ]);
 
-  function onSubmit(name, amenities, img_url, room_plan, room_types){
-      const finalObj = {
-          name,
-          amenities,
-          img_url,
-          room_plan,
-          room_types
-      }
-      console.log(finalObj);
+  function onSubmit(name, amenities, img_url, room_plan, room_types) {
+    const finalObj = {
+      name,
+      amenities,
+      img_url,
+      room_plan,
+      room_types,
+    };
+    console.log(finalObj);
   }
 
   return (
-    <div>
+    <div className="admin">
       <h1>hello, {user.displayName.toLowerCase()}...</h1>
       <h2>let's get to work</h2>
       <div className="schools">
-        <h3>{school.toLowerCase()}'s dorms</h3>
-        <Collapsible
-          onSubmit={onSubmit}
-        />
+        <div className="admin-title">
+          <h3>{school.toLowerCase()}'s dorms</h3>
+          <Collapsible className="collapse" onSubmit={onSubmit} />
+        </div>
         {dormArr.map(function (obj, index) {
           return (
-            <div className="dormObj">
-              <div>
-                <img src={obj.img_url} alt="" className="smallImg" />
-              </div>
+            <div className="dormObj" style={{backgroundImage: `url(${obj.img_url})`}}>
               <div className="info">
                 <p>{obj.name.toLowerCase()}</p>
                 <ul>

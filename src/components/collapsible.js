@@ -1,15 +1,28 @@
 import React, { useState } from "react";
 import useCollapse from "react-collapsed";
+import "../pages/admin.css"
 function Collapsible({ onSubmit }) {
   const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
   const [name, setName] = useState("");
   const [amenities, setAmenities] = useState([]);
   const [img_url, setImgUrl] = useState("");
   const [room_plan, setRoomPlan] = useState("");
-  const [room_types, setRoomTypes] = useState([]);
   const [numRoomTypes, setNumRoomTypes] = useState(0);
 
-  const tempObj = {};
+  let tempObj = {};
+
+  function submitButton() {
+    const tempArr = [];
+    for (const prop in tempObj) {
+      if (prop.includes("room")) {
+          console.log(tempObj[prop])
+        tempArr.push(tempObj[prop]);
+        delete tempObj[prop];
+      }
+    }
+    console.log(tempArr);
+    onSubmit(name, amenities, img_url, room_plan, tempArr);
+  }
 
   return (
     <div className="collapsible">
@@ -38,13 +51,7 @@ function Collapsible({ onSubmit }) {
           />
           {numRoomTypes === 0 || !numRoomTypes ? (
             <div>
-              <button
-                onClick={() =>
-                  onSubmit(name, amenities, img_url, room_plan, room_types)
-                }
-              >
-                submit
-              </button>
+              <button onClick={submitButton}>submit</button>
             </div>
           ) : (
             <div>
@@ -57,7 +64,7 @@ function Collapsible({ onSubmit }) {
                       type="text"
                       key={`name${i}`}
                       onChange={(e) => {
-                        tempObj[`room${i}`].name = e.target.value;
+                        tempObj[`room${i}`]['name'] = e.target.value;
                       }}
                     />
                     <p>available beds:</p>
@@ -65,7 +72,7 @@ function Collapsible({ onSubmit }) {
                       type="number"
                       key={`number${i}`}
                       onChange={(e) => {
-                        tempObj[`room${i}`].number = parseInt(
+                        tempObj[`room${i}`]['number'] = parseInt(
                           e.target.value,
                           10
                         );
@@ -74,13 +81,7 @@ function Collapsible({ onSubmit }) {
                   </div>
                 );
               })}
-              <button
-                onClick={() =>
-                  onSubmit(name, amenities, img_url, room_plan, room_types)
-                }
-              >
-                submit
-              </button>
+              <button onClick={submitButton}>submit</button>
             </div>
           )}
         </div>

@@ -1,3 +1,81 @@
-.smallImg{
-    width: 50%;
+.admin {
+  background-color: #d6f0ff;
+  height: 100vh;
+  width: 90vw;
+  padding: 5vh;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+}
+
+.admin > h1 {
+    font-size: 5vh;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.admin > h2 {
+    margin-top: 1vh;
+    font-size: 3vh;
+    color: #932F6D;
+    margin-bottom: 0;
+}
+
+.admin-title {
+    margin: 0;
+}
+
+.schools {
+    width: 90%;   
+}
+
+.schools > h3 {
+    margin-bottom: 0;
+}
+
+.collapsible {
+    background-color: #420039;
+    color: white;
+    padding: 0.5vh 1vh;
+    margin-left: 0vh;
+    width: 30vw;
+    height: 2.5vh;
+    text-align: center;
+    border-radius: 1vh;
+    margin-bottom: 1vh;
+    margin-top: -2vh;
+}
+
+.dormObj{
+    z-index: 0;
+    display: flex;
+    justify-content: flex-start;
+    background-size: cover;
+    height: 30vh;
+    margin-bottom: 3vh;
+    border-radius: 4vh;
+}
+
+.info {
+    width: 50vw;
+    background-color: rgb(74, 123, 157, 0.75);
+    margin-left: auto;
+    color: #ECFFB0;
+    border-top-right-radius: 4vh;
+    border-bottom-right-radius: 4vh;
+    padding-left: 2vh;
+}
+
+.content {
+    position: relative;
+    z-index: 10;
+    background-color:#420039;
+    width: 280%;
+    margin-left: -2vh;
+    margin-top: -0.5vh;
+    border-radius: 5vh;
 }
