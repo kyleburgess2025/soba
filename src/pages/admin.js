@@ -66,9 +66,15 @@ function Admin() {
         </div>
         {dormList.map(function (obj, index) {
           return (
-            <div className="dormObj" style={{backgroundImage: `url(${obj.dorm_img_url})`}}>
+            <div
+              className="dormObj"
+              style={{ backgroundImage: `url(${obj.dorm_img_url})` }}
+            >
               <div className="info">
                 <h1>{user.displayName.toLowerCase()}</h1>
+                <button className="delete" onClick={() => deleteDorm(obj._id)}>
+                  delete
+                </button>
                 <ul>
                   {obj.dorm_amenities.map(function (amen, index) {
                     return <li>{amen.toLowerCase()}</li>;
@@ -87,7 +93,6 @@ function Admin() {
                 </ul>
               </div>
               {/* this deletes the dorm */}
-              <button onClick={() => deleteDorm(obj._id)}>DELETE</button>
             </div>
           );
         })}
