@@ -5,21 +5,39 @@ import { Link } from "react-router-dom";
 
 function Onboard() {
   const [user, loading, error] = useAuthState(auth);
-  const [selections, setSelections] = useState({});
-  const [type, setType] = useState("admin");
+  const [selections, setSelections] = useState();
+  const [year, setYear] = useState("admin");
+  const [gender, setGender] = useState("male");
+  const [school, setSchool] = useState("Vanderbilt");
   const [numRoommates, setNum] = useState(0);
 
-  let tempObj = {};
+  let tempObj = {year: "admin"};
+
+  const onSubmit = () => {
+    tempObj.gender = gender;
+    tempObj.school = school;
+    tempObj.numRoommates = numRoommates;
+    tempObj.year = year;
+    setSelections(tempObj);
+    console.log(tempObj);
+      //    Save selections to user profile
+  }
 
   return (
     <div>
       <h1>welcome, {user.displayName.toLowerCase()}</h1>
       <h2>let's get acquainted before we get to the good stuff</h2>
+      <p>what is your university?</p>
+      <input
+        type="text"
+        onChange={(e) => {
+          setSchool(e.target.value);
+        }}
+      />
       <p>what is your year?</p>
       <select
         onChange={(e) => {
-          setType(e);
-          tempObj.year = e;
+          setYear(e.target.value);
         }}
       >
         <option>admin</option>
@@ -28,16 +46,18 @@ function Onboard() {
         <option>junior</option>
         <option>senior</option>
       </select>
-      {type === "admin" ? (
+      {year === "admin" ? (
         <div>
-          <Link to="/">submit</Link>
+          <Link to="/admin" onClick={onSubmit}>
+            submit
+          </Link>
         </div>
       ) : (
         <div>
           <p>what is your gender?</p>
           <select
             onChange={(e) => {
-              tempObj.gender = e;
+              setGender(e.target.value);
             }}
           >
             <option>male</option>
@@ -48,10 +68,9 @@ function Onboard() {
           <p>how many roommates do you plan to have next year?</p>
           <select
             onChange={(e) => {
-              setNum(e);
+              setNum(parseInt(e.target.value, 10));
             }}
           >
-            <option>not sure</option>
             <option>0</option>
             <option>1</option>
             <option>2</option>
@@ -62,25 +81,37 @@ function Onboard() {
             <option>7</option>
             <option>8</option>
             <option>9</option>
+            <option>not sure</option>
           </select>
           {numRoommates === 0 || numRoommates === "not sure" ? (
-            <Link to="/">submit</Link>
+            <Link to="/" onClick={onSubmit}>
+              submit
+            </Link>
           ) : (
             <div>
               <p>list the school email of each of your intended roommates:</p>
-              <p>if a roommate has not joined soba, they will be invited over email</p>
-              <p>(this is optional, but including roommates will help us compute your chances of getting your preferred room)</p>
+              <p>
+                if a roommate has not joined soba, they will be invited over
+                email
+              </p>
+              <p>
+                (this is optional, but including roommates will help us compute
+                your chances of getting your preferred room)
+              </p>
               {Array.from(Array(numRoommates), (e, i) => {
                 return (
                   <input
                     type="text"
                     key={i}
                     onChange={(e) => {
-                      tempObj[`roommate${i}`] = e;
+                      tempObj[`roommate${i}`] = e.target.value;
                     }}
                   />
                 );
               })}
+              <Link to="/" onClick={onSubmit}>
+                submit
+              </Link>
             </div>
           )}
         </div>
