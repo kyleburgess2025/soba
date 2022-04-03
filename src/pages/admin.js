@@ -113,11 +113,11 @@ function Admin() {
 
   function onSubmit(name, amenities, img_url, room_plan, room_types) {
     const finalObj = {
-      name,
-      amenities,
-      img_url,
-      room_plan,
-      room_types,
+      dorm_name: name,
+      dorm_amenities: amenities,
+      dorm_img_url: img_url,
+      dorm_room_plan: room_plan,
+      dorm_room_types: room_types,
     };
     setDormList([...dormList, finalObj]);
     insertToDorm(finalObj);
