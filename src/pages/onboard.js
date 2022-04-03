@@ -1,12 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { auth } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./onboard.css";
 
 import Axios from 'axios';
 
 function Onboard() {
+  const navigate = useNavigate();
+
+  auth.onAuthStateChanged(function(user) {
+    if (user) {
+      console.log('LOGGED IN!!');
+      // navigate("/admin");
+    } else {
+      // No user is signed in.
+    }
+    });
+
   const [user, loading, error] = useAuthState(auth);
   const [selections, setSelections] = useState();
   const [year, setYear] = useState("admin");
