@@ -7,6 +7,7 @@ import Register from "./pages/register";
 import Dashboard from "./pages/dashboard";
 import Onboard from "./pages/onboard";
 import Admin from "./pages/admin";
+import Explore from "./pages/explore"
 
 /**
  * Router for dashboard.
@@ -23,6 +24,7 @@ const Router = () => (
     <Route exact path="/register" element={<Register />} />
     <Route exact path="/onboard" element={<Onboard />} />
     <Route exact path="/admin" element={<Admin />} />
+    <Route exact path="/explore" element={<Explore />} />
   </Routes>
 );
 
