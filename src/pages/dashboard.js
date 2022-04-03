@@ -8,7 +8,7 @@ import "./dashboard.css";
 
 const Dashboard = () => {
   const [user, loading, error] = useAuthState(auth);
-  const [savedDorms, setDorms] = useState([
+  const savedDorms = [
     {
       name: "McGill",
       amenities: ["Laundry", "Good location", "Singles"],
@@ -48,6 +48,18 @@ const Dashboard = () => {
             },
           ],
           avail_beds: 70,
+        },
+      ],
+      reviews: [
+        {
+          user: "Kari",
+          value: 4,
+          message: "Great place!",
+        },
+        {
+          user: "Kyle",
+          value: 5,
+          message: "Great place!",
         },
       ],
     },
@@ -92,16 +104,45 @@ const Dashboard = () => {
           avail_beds: 70,
         },
       ],
+      reviews: [
+        {
+          user: "Kari",
+          value: 1,
+          message: "Great place!",
+        },
+        {
+          user: "Kyle",
+          value: 2,
+          message: "Great place!",
+        },
+      ],
     },
-  ]);
+  ];
+
+  const [self, setSelf] = useState({
+    name: user.displayName,
+    year: "freshman",
+    gender: "male",
+    roommates: ['hello@gmail.com', 'goodbye@gello.com'],
+    num_roommates: 2,
+    school: 'vanderbilt',
+    points: 3,
+    savedDorms
+  })
 
   return (
     <div className="db">
-      <h1 className="dbHello">hello, {user.displayName}</h1>
-      {savedDorms.length === 0 ? <h3>you have no saved dorms.</h3> : <div>
+      <h1 className="dbHello">hello, {user.displayName.toLowerCase()}</h1>
+      {self.savedDorms.length === 0 ? <h3>you have no saved dorms.</h3> : <div>
         <h3>saved dorms:</h3>
-        {savedDorms.map(function(obj, i){
+        {self.savedDorms.map(function(obj, i){
           return <Dorm info={obj}></Dorm>
+        })}
+        </div>}
+      {self.num_roommates === 0 ? <h3>you have no recorded roommates.</h3> : <div>
+        <h3>your roommates:</h3>
+        {self.roommates.map(function(email, i){
+          return <p>{email}</p>
         })}
         </div>}
     </div>
