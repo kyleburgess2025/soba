@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import calculateAverage from "../pages/helper_functions/reviews_to_value";
 import ReactStars from "react-stars";
+import { probability } from "../pages/helper_functions/probability";
 
 const Dorm = ({ info }) => {
-    console.log(calculateAverage(info.room_types));
+  console.log(probability(info));
   return (
     <div>
       <div
