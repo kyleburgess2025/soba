@@ -120,17 +120,6 @@ const Dashboard = () => {
     },
   ];
 
-  useEffect(() => {
-    Axios.get("http://localhost:3001/dorm/count")
-      .then((res) => {
-        console.log(res);
-        setNum(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  });
-
   const [self, setSelf] = useState({
     name: user.displayName,
     year: "freshman",

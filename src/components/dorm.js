@@ -1,10 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import calculateAverage from "../pages/helper_functions/reviews_to_value";
 import ReactStars from "react-stars";
 import { probability } from "../pages/helper_functions/probability";
+import Axios from 'axios';
 
 const Dorm = ({ info }) => {
   console.log(probability(info));
+  const [prob, setProb] = useState(0);
+
+  useEffect(() => {
+    Axios.get("http://localhost:3001/count")
+      .then((res) => {
+        setProb(probability(info,res.data.result));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+
   return (
     <div>
       <div
@@ -21,6 +34,7 @@ const Dorm = ({ info }) => {
             value={calculateAverage(info.reviews)}
             half={true}
           />
+          <p>probability: {prob}/100</p>
           <ul>
             {info.amenities.map(function (amen, index) {
               return <li>{amen.toLowerCase()}</li>;
