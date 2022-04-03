@@ -171,37 +171,8 @@ function Admin() {
             </div>
           );
         })}
+      </div>  
       </div>
-      <h1>HI</h1>
-
-      {dormList.map((val, key) => {
-        return (
-          <div key={key}>
-            <h3>{val.dorm_name}</h3>
-            <p>{val.dorm_amenities}</p>
-            <p>{val.dorm_img_url}</p>
-            <p>{val.dorm_room_plan}</p>
-            <p>
-              {val.dorm_room_types.map((val, key) => {
-                return (
-                  <div key={key}>
-                    <p>{val.name}</p>
-                    <p>{val.avail_beds}</p>
-                  </div>
-                );
-              })}
-            </p>
-
-
-            {/* <button onClick={() => updateSchoolName(val._id)}>Update</button> */}
-            {/* <button onClick={() => deleteSchool(val._id)}>Delete</button> */}
-          </div>
-        )
-      })}
-
-    </div>
-    
-    
   );
 }
 
