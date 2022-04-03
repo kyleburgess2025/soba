@@ -4,6 +4,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import "./onboard.css";
 
+import Axios from 'axios';
+
 function Onboard() {
   const [user, loading, error] = useAuthState(auth);
   const [selections, setSelections] = useState();
@@ -32,6 +34,49 @@ function Onboard() {
     //    Save selections to user profile
   };
 
+  // INSERT student
+  const insertToStudent = (obj) => {
+    // console.log(obj);
+    let tempArr = [];
+
+    for (const prop in tempObj) {
+      if (prop.includes("roomie")){
+        tempArr.push(tempObj[prop]);
+        delete tempObj[prop];
+      }
+    };
+
+    tempObj.roommates = tempArr;
+    tempObj.gender = gender;
+    tempObj.school = school;
+    tempObj.numRoommates = numRoommates;
+    tempObj.year = year;
+    tempObj.name = user.displayName.toLowerCase();
+
+    if (year === "freshman") {
+      tempObj.points = 1;
+    } else if (year === "sophomore") {
+      tempObj.points = 2;
+    } else if (year === "junior") {
+      tempObj.points = 3;
+    } else if (year === "senior") {
+      tempObj.points = 4;
+    } else {
+      console.log("not a valid year");
+    }
+
+    setSelections(tempObj);
+    console.log(tempObj);
+
+    Axios.post('http://localhost:3001/student/insert', tempObj)
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+
   return (
     <div className="onboard">
       <h1 className="obTitle">
@@ -48,6 +93,7 @@ function Onboard() {
           setSchool(e.target.value);
         }}
       />
+      {/* year */}
       <p>what is your <span className="special">year</span>?</p>
       <select
         onChange={(e) => {
@@ -68,6 +114,7 @@ function Onboard() {
         </div>
       ) : (
         <div className="student">
+          {/* gender */}
           <p>what is your <span className="special">gender</span>?</p>
           <select
             onChange={(e) => {
@@ -79,6 +126,7 @@ function Onboard() {
             <option>nonbinary</option>
             <option>other/prefer not to say</option>
           </select>
+          {/* number of roomates */}
           <p>how many <span className="special">roommates</span> do you plan to have next year?</p>
           <select
             onChange={(e) => {
@@ -95,7 +143,7 @@ function Onboard() {
           </select>
           {numRoommates === 0 || numRoommates === "not sure" ? (
             <div className="linkContainer1">
-              <Link className="link" to="/" onClick={onSubmit}>
+              <Link className="link" to="/" onClick={insertToStudent}>
                 submit
               </Link>
             </div>
@@ -119,7 +167,7 @@ function Onboard() {
                 );
               })}
               <div className="linkContainer2">
-                <Link className="link" to="/" onClick={onSubmit}>
+                <Link className="link" to="/" onClick={insertToStudent}>
                   submit
                 </Link>
               </div>
