@@ -15,6 +15,14 @@ function Onboard() {
   let tempObj = { year: "admin" };
 
   const onSubmit = () => {
+    let tempArr = [];
+    for (const prop in tempObj) {
+      if (prop.includes("roomie")){
+        tempArr.push(tempObj[prop]);
+        delete tempObj[prop];
+      }
+    }
+    tempObj.roommates = tempArr;
     tempObj.gender = gender;
     tempObj.school = school;
     tempObj.numRoommates = numRoommates;
@@ -105,7 +113,7 @@ function Onboard() {
                     type="text"
                     key={i}
                     onChange={(e) => {
-                      tempObj[`roommate${i}`] = e.target.value;
+                      tempObj[`roomie${i}`] = e.target.value;
                     }}
                   />
                 );

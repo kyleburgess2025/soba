@@ -1,0 +1,51 @@
+{
+    "schools": [
+        {
+            "name": "Vanderbilt",
+            "dorms": [
+                {
+                    "name": "EBI",
+                    "amenities": ["dining", "laundry"],
+                    "averagePt": 4
+                },
+                {
+                    "name": "Hudson",
+                    "amenities": ["food", "apples"],
+                    "averagePt": 2
+                },
+                {
+                    "name": "McGill",
+                    "amenities": ["laundry", "apples"],
+                    "averagePt": 1
+                }
+            ]
+        }
+    ],
+    "students": [
+        {
+            "name": "Jane B",
+            "gender": "female",
+            "year": "freshman",
+            "numRoommates": 3,
+            "school": "Vanderbilt",
+            "roommates": ["kyle.m.burgess@vanderbilt.edu", "stella@gmail.com", "friends.com"],
+            "preferredDorms": ["EBI", "McGill"],
+            "points": 3
+        },
+        {
+            "name": "Frieda B",
+            "gender": "female",
+            "year": "sophomore",
+            "numRoommates": 0,
+            "school": "Vanderbilt",
+            "preferredDorms": ["EBI", "McGill"],
+            "points": 2
+        }
+    ],
+    "admin": [
+        {
+            "name": "Mr. Johnson",
+            "school": "Vanderbilt"
+        }
+    ]
+}

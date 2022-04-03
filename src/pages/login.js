@@ -18,6 +18,7 @@ function Login() {
   return (
     <div className="login">
       <div className="login__container">
+        <img id="icon" src={require("./assets/icon.png")} alt="icon" />
         <h1 className="signin">sign in</h1>
         <button className="login__btn login__google" onClick={signInWithGoogle}>
           login with Google
