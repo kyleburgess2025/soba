@@ -103,6 +103,7 @@ function Admin() {
       room_plan,
       room_types,
     };
+    setDorms([...dormArr, finalObj]);
     console.log(finalObj);
   }
 
