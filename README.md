@@ -1,6 +1,6 @@
 # This is the technical README for our project. This simply walks you though the steps needed to run our application.
 
-## You can find the project charter, architecture, and a summary of the housing process at Vanderbilt under the information tab and at https://vhl.ink/soba Our project charter, architecture, and the code required to run this application will also all be located in this repository. We are leaving this README.md file in order for other individuals to be able to run our application if they would like
+## You can find the project charter, architecture, and a summary of the housing process at Vanderbilt under the information tab and at https://vhl.ink/soba We are leaving this README.md file in order for other individuals to be able to run our application if they would like
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
